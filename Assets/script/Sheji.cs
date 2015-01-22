@@ -32,15 +32,13 @@ public class Sheji : MonoBehaviour
         float z = Input.GetAxis ("Vertical") * Time.deltaTime * Speed;
 
         if (Input.GetButton ("Fire2")) {
+			
             float rx = Input.GetAxis ("Mouse Y");
             float ry = Input.GetAxis ("Mouse X");
 
-            transform.Rotate(
-                rx * Time.deltaTime * 220,
-                ry * Time.deltaTime * -220,
-                0,
-                Space.World);
-
+			transform.Rotate( rx * Time.deltaTime * 220, 0, 0,	Space.Self);
+			transform.Rotate( 0, ry * Time.deltaTime * -220, 0,	Space.World);
+	
         }
 
         Vector3 pos = transform.position;
@@ -48,7 +46,7 @@ public class Sheji : MonoBehaviour
             pos.y = 3.0f;
             transform.position = pos;
         }
-        transform.Translate (x, 0, z);
+        transform.Translate (x, 0, z, Space.Self);
 
 
         if (Input.GetButton("Fire1")) {
